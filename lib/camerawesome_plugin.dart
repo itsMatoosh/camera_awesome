@@ -76,13 +76,14 @@ class CamerawesomePlugin {
   static Future<bool> stop() async {
     _orientationStream = null;
     currentState = CameraRunningState.STOPPING;
+    bool res;
     if (Platform.isAndroid) {
       res = await CameraInterface().stop();
     } else {
       res = await _channel.invokeMethod("stop");
     }
     currentState = CameraRunningState.STOPPED;
-    return true;
+    return res;
   }
 
   static Future<bool?> focus() => _channel.invokeMethod("focus");
