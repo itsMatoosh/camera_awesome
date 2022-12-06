@@ -70,9 +70,19 @@ class _AspectRatioButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Image(image: icon, width: width),
+    return AwesomeOrientedWidget(
+      child: Material(
+        color: Colors.transparent,
+        child: IconButton(
+          onPressed: onTap,
+          icon: Center(
+            child: Image(
+              image: icon,
+              width: width,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
